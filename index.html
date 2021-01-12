@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+
+<body class="background" ng-app="ticTacToe" ng-controller="gameController as ctrl">
+    <div class="foreground">
+        <div>
+            <h1 class="heading">TIC TAC TOE</h1>
+        </div>
+        <h3 class="info">
+            <span>Player 1: 'X'</span> &nbsp;&nbsp;
+            <span>Player 2: 'O'</span><br><br>
+            <span>Player {{player}} plays: </span>
+        </h3>
+        <!--Board-->
+        <div class="board">
+            <div class="row" ng-repeat="row in board track by $index" style="display: flex;flex-direction: row;">
+                <div class="cell" ng-repeat="cell in row track by $index">
+                    <div class="box" ng-click="ctrl.playTurn($parent.$index,$index)">
+                        {{cell}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="result" ng-if="ctrl.winner"><br>Congratulations!! Player {{ctrl.winner}} won.</h2>
+
+        <h2 class="result" ng-if="ctrl.gameOver"><br>Its a draw!!</h2>
+        <br>
+        <div class="button-container"><button class="button" ng-show="ctrl.winner || ctrl.gameOver"
+                ng-click="ctrl.resetGame()">PLAY AGAIN</button></div>
+    </div>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="components/game/gameController.js"></script>
+</body>
+
+</html>
