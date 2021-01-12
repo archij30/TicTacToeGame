@@ -29,7 +29,7 @@
 
         <h2 class="result" ng-if="ctrl.winner"><br>Congratulations!! Player {{ctrl.winner}} won.</h2>
 
-        <h2 class="result" ng-if="ctrl.gameOver"><br>Its a draw!!</h2>
+        <h2 class="result" ng-if="ctrl.gameOver && !ctrl.winner"><br>Its a draw!!</h2>
         <br>
         <div class="button-container"><button class="button" ng-show="ctrl.winner || ctrl.gameOver"
                 ng-click="ctrl.resetGame()">PLAY AGAIN</button></div>
